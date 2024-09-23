@@ -1,0 +1,30 @@
+.link_text {
+    color: var(--sidebar-text);
+    text-decoration: none;
+    padding-left: 16px;
+}
+.link {
+    display: flex;
+    align-items: center;
+}
+.category_link {
+    text-decoration: none;
+    color: var(--sidebar-text);
+    background-color: var(--sidebar-background-color);
+}
+
+.active {
+    color: var(--sidebar--acive-color);
+}
+
+.active_svg svg path {
+    fill: var(--sidebar--acive-color);
+}
+
+.category_active_svg svg path {
+    fill: var(--sidebar--acive-color);
+}
+
+.styles.category_active {
+    color: var(--sidebar--acive-color);
+}
