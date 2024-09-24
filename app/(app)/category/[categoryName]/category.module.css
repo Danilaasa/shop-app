@@ -11,46 +11,7 @@
     grid-gap: 25px;
 }
 
-.image {
-    width: 100%;
-}
-
-.article_info {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.article {
-    border: 1px solid var(--icon-fill);
-    border-radius: 10px;
-    padding: 20px 24px;
-    overflow: hidden;
-}
-
-.title {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -moz-box;
-    -moz-box-orient: vertical;
-    display: -webkit-box;
-    -webkit-line-clamp: 1;
-    -webkit-box-orient: vertical;
-    line-clamp: 3;
-    box-orient: vertical;
-    margin: 0;
-}
 
 
-.rating_number {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--sidebar-text);
-}
 
-.rating {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
+
