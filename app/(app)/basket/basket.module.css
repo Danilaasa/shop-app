@@ -1,0 +1,19 @@
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 250px);
+    grid-gap: 25px;
+}
+.info {
+    display: flex;
+    align-items: center;
+    gap: 450px;
+}
+
+.button {
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: var(--sidebar--acive-color);
+}

@@ -16,8 +16,18 @@ export async function addProductsInBasket(Article: Product) {
             price: Article.price,
             category: Article.category,
             description: Article.description,
-            image: Article.image
-        }) ,
+            image: Article.image,
+            rating: Article.rating
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+}
+
+export async function clearBasket() {
+    await fetch("http://localhost:8000/products/clear", {
+        method: "POST",
         headers: {
             "Content-type": "application/json"
         }

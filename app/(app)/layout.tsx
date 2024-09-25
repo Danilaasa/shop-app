@@ -24,12 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html  className={poppins.className} lang="en"  >
-      <body >
+      <body className={styles.container} >
       <main className={classNames(styles.layout, poppins.className)} >
           <Sidebar />
           <div className={styles.page} >
               <Header />
-                {children}
+                  {children}
           </div>
       </main>
       </body>

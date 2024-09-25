@@ -15,7 +15,7 @@ export const AddToCart:FC<IAddToCart> = ({ Article }) => {
 
 
     return (
-        <button onClick={ () => addProductsInBasket(Article)}  className={styles.tag}>
+        <button onClick={() => addProductsInBasket(Article)}  className={styles.tag}>
             <Cart className={styles.icon}/>
         </button>
     )

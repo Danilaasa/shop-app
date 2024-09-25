@@ -10,3 +10,7 @@ export const getAllProducts = (): Promise<Product[]> => {
 export const getProductsByCategory = (category: category): Promise<Product[]> => {
     return fetch(`https://fakestoreapi.com/products/category/${category}`).then(res => res.json())
 }
+
+export const getSingleProduct = (id: string): Promise<Product> => {
+    return fetch(`https://fakestoreapi.com/products/${id}`).then(res => res.json())
+}

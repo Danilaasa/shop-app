@@ -7,4 +7,8 @@
     flex-direction: column;
 }
 
+.container {
+    overflow-x: hidden;
+}
+
 

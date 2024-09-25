@@ -3,7 +3,14 @@ import Cookies from "js-cookie"
 import Link from "next/link";
 import styles from "./checkJWT.module.css"
 import {useEffect, useState} from "react";
+import { Poppins } from "next/font/google";
+import classNames from "classnames";
 
+const poppins = Poppins({
+    weight: ['400', '700'],
+    style: ['normal'],
+    subsets: ['latin'],
+})
 
 export const CheckJWT = () => {
     const [onClient, setOnClient] = useState(false)
@@ -22,6 +29,6 @@ export const CheckJWT = () => {
 
 
    return (
-       onClient ? <button onClick={onAuthClick} className={styles.auth} >Logout</button> : <Link href="/auth" className={styles.auth} >Sign in/Sign up</Link>
+       onClient ? <button onClick={onAuthClick} className={classNames(styles.auth, poppins.className)} >Logout</button> : <Link href="/auth" className={styles.auth} >Sign in/Sign up</Link>
    )
 }
