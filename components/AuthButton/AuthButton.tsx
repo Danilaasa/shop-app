@@ -1,7 +1,7 @@
 "use client"
 import Cookies from "js-cookie"
 import Link from "next/link";
-import styles from "./checkJWT.module.css"
+import styles from "./AuthButton.module.css"
 import {useEffect, useState} from "react";
 import { Poppins } from "next/font/google";
 import classNames from "classnames";

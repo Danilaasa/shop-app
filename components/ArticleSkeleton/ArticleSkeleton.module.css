@@ -1,0 +1,33 @@
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+
+  .card__body img {
+    height: 250px;
+    width: 220px;
+    border-radius: 10px;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+
+  .skeleton_text {
+    width: 90%;
+    height: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+  .skeleton-text__body {
+    width: 75%;
+  }
+  
+  .skeleton-footer {
+    width: 30%;
+  }

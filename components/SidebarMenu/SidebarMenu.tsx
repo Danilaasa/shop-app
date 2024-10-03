@@ -9,7 +9,7 @@ import {CategoriesPath} from "@/utils/utils";
 import classNames from "classnames";
 import {usePathname} from "next/navigation";
 import Category from "../../public/category.svg"
-
+import Cart from "../../public/cart.svg"
 
 interface ISidebarMenu {
     categoryNames: category[]
@@ -52,6 +52,24 @@ export const SidebarMenu:FC<ISidebarMenu> = ({ categoryNames }) => {
                         )
                     })}
                 </SubMenu>
+                <MenuItem component={
+                        <Link  href="/basket" className={classNames(styles.link_text, {
+                           [styles.active]: pathanme === "/basket"
+                        })} >
+                            Basket
+                        </Link>
+                    }
+                >
+                    <div className={classNames(styles.link, {
+                        [styles.active_svg]: pathanme === "/basket"
+                    })} >
+                        <Cart />
+                        <span className={classNames(styles.link_text, {
+                            [styles.active]: pathanme === "/basket"
+                        })} >Basket</span>
+                    </div>
+
+                </MenuItem>
             </Menu>
         </Sidebar>
     )

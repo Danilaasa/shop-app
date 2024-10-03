@@ -1,10 +1,21 @@
 "use server"
 
 
-import {Product} from "@/api/types";
+import {Basket, Product} from "@/api/types";
 
-export async function getProducsInBasket() {
+export async function getProducsInBasket():Promise<Basket> {
     return fetch("http://localhost:8000/products").then((data) => data.json())
+}
+
+export async function checkProductInBasket(id: number):Promise<boolean> {
+    const { products } = await getProducsInBasket()
+    const product = products.find((product) => product.id === id)
+    if (product && product !== null) {
+        return true
+    } else {
+        return false
+    }
+
 }
 
 export async function addProductsInBasket(Article: Product) {
@@ -32,4 +43,17 @@ export async function clearBasket() {
             "Content-type": "application/json"
         }
     })
+}
+
+export async function deleteProduct(Article: Product) {
+    await fetch("http://localhost:8000/products/delete", {
+        method: "POST",
+        body: JSON.stringify({
+            id: Article.id
+        }),
+        headers: {
+            "Content-type": "application/json"
+        }
+    }
+    )
 }

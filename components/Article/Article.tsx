@@ -1,11 +1,22 @@
+"use client"
 import styles from "./Article.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import Star from "@/public/Star.svg";
-import {AddToCart} from "@/components/AddToCardButton/AddToCard";
 import {Product} from "@/api/types";
+import dynamic from "next/dynamic";
+const AddToCart = dynamic(() => import("../AddToCardButton/AddToCard"), {ssr: false})
 
-export const Article = ({ article }: { article: Product }) => {
+
+
+
+
+
+
+
+export function Article({ article }: { article: Product }) {
+
+    
     return (
         <article className={styles.article}>
             <Link href={`/product/${article.id}`} className={styles.image_cont}>
@@ -21,7 +32,8 @@ export const Article = ({ article }: { article: Product }) => {
                                   <Star/>
                                   {`${article.rating.rate}(${article.rating.count})`}
                               </span>
-                    <AddToCart Article={article} />
+                              <AddToCart Article={article} />
+                                
                 </div>
             </div>
         </article>

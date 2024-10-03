@@ -1,11 +1,28 @@
-import {getSingleProduct} from "@/api/api";
+import {getAllProducts, getSingleProduct} from "@/api/api";
 import Image from "next/image";
 import styles from "./product.module.css"
+
+
+export async function generateStaticParams() {
+    const products = await getAllProducts()
+
+    return products.map((product) => {
+        product.id.toString()
+    })
+}
+
+export async function generateMetadata({ params }: {params: {id: string}}) {
+    const product = await getSingleProduct(params.id)
+    return {
+      title: `${product.title}`,
+      description: `${product.description}`
+    }
+  }
 
 export default async function ProductPage({params}: {params: {id: string}}) {
     const product = await getSingleProduct(params.id)
     return (
-        <div>
+        <article>
             <h1 className={styles.h1} >{product.title}</h1>
             <div className={styles.product} >
                 <div className={styles.image_cont} >
@@ -24,7 +41,7 @@ export default async function ProductPage({params}: {params: {id: string}}) {
 
                 </div>
             </div>
-        </div>
+        </article>
 
     )
 }

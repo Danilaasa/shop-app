@@ -2,7 +2,32 @@
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 10px;
 }
+
+.skeleton {
+    animation: skeleton-loading 1s linear infinite alternate;
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-color: hsl(200, 20%, 80%);
+    }
+    100% {
+      background-color: hsl(200, 20%, 95%);
+    }
+  }
+
+.skeleton_text {
+    width: 90%;
+    height: 0.7rem;
+    margin-bottom: 0.5rem;
+    border-radius: 0.25rem;
+  }
+
+.skeleton-footer {
+    width: 30%;
+  }
 
 .image_cont {
     display: flex;

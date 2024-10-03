@@ -1,9 +1,6 @@
 "use client"
-import {SearchBar} from "@/components/SearchBar/SearchBar";
-import Link from "next/link"
-import Cart from "../../public/cart.svg"
 import styles from './Header.module.css'
-import {CheckJWT} from "@/api/checkJWT";
+import {CheckJWT} from "@/components/AuthButton/AuthButton";
 
 
 
@@ -11,11 +8,9 @@ export const Header = () => {
 
     return (
         <header className={styles.header} >
-                <SearchBar />
+            <h1 className={styles.h1} >ShopApp</h1>
             <div className={styles.utils} >
-                <Link href="/basket">
-                    <Cart />
-                </Link>
+            
                 {CheckJWT()}
             </div>
         </header>

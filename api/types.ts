@@ -10,6 +10,11 @@ export interface Product {
     rating: Rating
 }
 
+export interface Basket {
+    count: number,
+    products: Product[]
+}
+
 interface Rating {
     rate: number;
     count: number

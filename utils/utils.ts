@@ -1,4 +1,5 @@
 import {category} from "@/api/types";
+import { ReactNode } from "react";
 
 export const CategoriesPath = {
     electronics: "electronics",
@@ -12,6 +13,14 @@ export const CategoriesTitles:CategoryTitles = {
     jewelery: "jewelery",
     men: "men's clothing",
     women: "women's clothing"
+}
+
+export const repeatSkeleton = (count: number, comp:ReactNode) => {
+    for(let i = 0; i < count; i++) {
+        return (
+            comp
+        )
+    }
 }
 
 type CategoryTitles = Record<string, category>

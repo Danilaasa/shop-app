@@ -25,6 +25,15 @@ app.post("/products/clear", (req, res) => {
     res.status(201).json({message: "basket cleaned"})
 })
 
+app.post("/products/delete", (req, res) => {
+    if (req.body) {
+        products = products.filter((product) => product.id !== req.body.id)
+        res.status(201).json({ message: "Product deleted" });
+    } else {
+        res.status(500).json({message: "product wasnt deleted"})
+    }
+})
+
 
 
 app.get("/products", (req, res) => {
