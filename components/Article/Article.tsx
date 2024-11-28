@@ -1,11 +1,14 @@
-"use client"
 import styles from "./Article.module.css";
 import Link from "next/link";
 import Image from "next/image";
 import Star from "@/public/Star.svg";
 import {Product} from "@/api/types";
 import dynamic from "next/dynamic";
-const AddToCart = dynamic(() => import("../AddToCardButton/AddToCard"), {ssr: false})
+const AddToCart = dynamic(() => import("../AddToCardButton/AddToCard"), 
+{   loading: () => <div className={styles.lds_ring}><div></div><div></div><div></div><div></div></div>, 
+    ssr: false 
+})
+
 
 
 
@@ -32,7 +35,8 @@ export function Article({ article }: { article: Product }) {
                                   <Star/>
                                   {`${article.rating.rate}(${article.rating.count})`}
                               </span>
-                              <AddToCart Article={article} />
+                                <AddToCart Article={article}  />
+                              
                                 
                 </div>
             </div>

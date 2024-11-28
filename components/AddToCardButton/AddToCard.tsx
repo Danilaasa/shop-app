@@ -8,18 +8,20 @@ import { usePathname } from "next/navigation";
 import classNames from "classnames";
 import Agree from "../../public/Agree.svg"
 import Cross from "../../public/Cross.svg"
-import { useRouter } from "next/navigation";
+import { useAppDispatch } from "@/lib/BasketProducts/hooks";
+import { BasketActions } from "@/lib/BasketProducts/BasketProductsSlice"
 
 
 
 export default function AddToCart({ Article }: { Article: Product }) {
     const [buttonChangeStyle, setButtonChangeStyle] = useState<boolean>(false)
     const pathaname = usePathname()
-    const router = useRouter()
+    const dispatch = useAppDispatch()
 
 
 
     const AddToCart = () => {
+        dispatch(BasketActions.incremented(Article))
         addProductsInBasket(Article)
         setButtonChangeStyle(true)
         if (typeof window !== undefined) {
@@ -29,11 +31,11 @@ export default function AddToCart({ Article }: { Article: Product }) {
     }
 
     const deleteCart = () => {
+        dispatch(BasketActions.decremented(Article.id))
         if (typeof window !== undefined) {
             localStorage.removeItem(Article.title)
         }
         deleteProduct(Article)
-        router.refresh()
     }
 
 

@@ -5,6 +5,7 @@ import {Sidebar} from "@/components/sidebar/sidebar";
 import { Poppins } from "next/font/google"
 import {Header} from "@/components/Header/Header";
 import classNames from "classnames";
+import { StoreProvider } from "../StoreProvider";
 
 export const metadata: Metadata = {
   title: "Home page",
@@ -29,7 +30,12 @@ export default function RootLayout({
           <Sidebar />
           <div className={styles.page} >
               <Header />
-                  {children}
+              <StoreProvider>
+                {children}
+              </StoreProvider>
+                
+              
+                  
           </div>
       </main>
       </body>

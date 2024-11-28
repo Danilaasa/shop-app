@@ -4,13 +4,14 @@ import { useState, useEffect } from "react"
 import { Product } from "@/api/types"
 import { clearBasket, getProducsInBasket } from "@/api/basket"
 import { Article } from "../../../components/Article/Article"
-import Cookies from "js-cookie"
-import { redirect } from "next/navigation"
+import { useAppSelector } from "@/lib/BasketProducts/hooks"
+
 
 
 
 export default function BasketPage() {
     const [articles, setArticles] = useState<Product[]>([])
+    const state = useAppSelector(state => state.basket.products)
 
 
     const clearProducts = () => {
@@ -29,13 +30,11 @@ export default function BasketPage() {
             setArticles(data.products)
         })
 
-    }, [localStorage.length])
+    }, [state])
 
 
 
     return (
-        Cookies.get("JWT")?.length
-        ?
         <div>
             <div className={styles.info} >
                 <h1>Товаров в корзине - {articles.length}</h1>
@@ -51,7 +50,6 @@ export default function BasketPage() {
 
 
         </div>
-        : redirect("/auth")
         
     )
 }

@@ -23,3 +23,5 @@ interface Rating {
 export interface JWT {
     access_token: string
 }
+
+
