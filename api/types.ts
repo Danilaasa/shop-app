@@ -10,6 +10,13 @@ export interface Product {
     rating: Rating
 }
 
+export interface Error {
+    message: string;
+    statusCode: number;
+    error: string
+}
+
+
 export interface Basket {
     count: number,
     products: Product[]

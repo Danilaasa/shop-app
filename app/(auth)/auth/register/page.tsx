@@ -3,47 +3,64 @@ import styles from "./register.module.css"
 import Link from "next/link";
 import {FormEvent, useState} from "react";
 import {LoginForm} from "@/app/(auth)/auth/page";
-
+import { useRouter } from "next/navigation";
+import {sendRegiser} from "@/app/(auth)/auth/register/RegiserAction";
 
 export default function AuthPage() {
-    const [errorsEmail, setErrorsEmail] = useState(false)
-    const [errorsPassword, setErrorsPassword] = useState(false)
+    const [formErrors, setFormErrors] = useState(false)
+    const [error, setError] = useState<null | Error>(null)
+    const router = useRouter()
 
-    const submit = (e:FormEvent) => {
+    const submit = async (e:FormEvent) => {
         e.preventDefault()
         const target = e.target as typeof e.target & LoginForm
         const email = target.email.value
         const password = target.password.value
-        if (!email.length) {
-            setErrorsEmail(true)
-        } else {
-            setErrorsEmail(false)
+        const name = target.name.value
+        const check = validateForm(email, password)
+        if (!check) {
+            setFormErrors(true)
         }
-        if (!password.length) {
-            setErrorsPassword(true)
+        if (check) {
+            const error = await sendRegiser(email, password, name)
+            setError(error)
+            if (!error) {
+                router.push("/")
+            }
+        }
+    }
+
+    const validateForm = (email: string, password: string ) => {
+        if (!password.length || password.length < 3) {
+            return false
+        }
+        if (email.length && password.length) {
+            return true
         } else {
-            setErrorsPassword(false)
+            return false
         }
     }
 
     return (
-        <div className={styles.cont} >
+        <div className={styles.cont}>
             <Link className={styles.link} href="/">
                 On Home Page
             </Link>
             <h1 className={styles.h1}>Create account</h1>
-            <form className={styles.form} onSubmit={submit} >
+            { formErrors && <span className={styles.error}>Error </span>}
+            { error && <span className={styles.error}>{error.message} </span>}
+            <form className={styles.form} onSubmit={submit}>
                 <label>Your Email</label>
-                {errorsEmail && <span className={styles.error} >Enter your email </span>}
-                <input className={styles.input} name="email" type="email" placeholder="Email" />
+                <input className={styles.input} name="email" type="email" placeholder="Email"/>
+                <label>Your Name</label>
+                <input className={styles.input} required name="name" type="text" placeholder="Your Name"/>
                 <label>Your Password</label>
-                {errorsPassword && <span className={styles.error} >Enter your password </span>}
-                <input className={styles.input} name="password" type="password" placeholder="Password" />
-                <button className={styles.button} type={"submit"} >
+                <input className={styles.input} name="password" type="password" placeholder="Password"/>
+                <button className={styles.button} type={"submit"}>
                     Sign up
                 </button>
             </form>
-            <Link className={styles.register} href="/auth" >Already have an account</Link>
+            <Link className={styles.register} href="/auth">Already have an account</Link>
         </div>
     )
 }

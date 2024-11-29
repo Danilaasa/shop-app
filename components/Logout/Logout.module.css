@@ -1,0 +1,12 @@
+.auth {
+    border: 1px solid var(--sidebar--acive-color);
+    background-color: var(--sidebar--acive-color);
+    padding: 10px 24px;
+    border-radius: 15px;
+    text-decoration: none;
+    color: var(--auth-link-color);
+}
+
+.auth:hover {
+    background-color: #af9136;
+}
