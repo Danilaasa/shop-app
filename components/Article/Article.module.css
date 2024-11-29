@@ -3,6 +3,7 @@
     border-radius: 10px;
     padding: 20px 24px;
     overflow: hidden;
+    height: 370px;
 }
 
 .tag {
@@ -59,11 +60,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding-top: 5px;
 }
 .lds_ring {
     /* change color here */
     color: #1c4c5b;
-    margin-bottom: 4px;
   }
   .lds_ring,
   .lds_ring div {
@@ -72,8 +73,8 @@
   .lds_ring {
     display: inline-block;
     position: relative;
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
   .lds_ring div {
     box-sizing: border-box;

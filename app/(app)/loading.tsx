@@ -5,7 +5,7 @@ export default function Loading() {
     return (
     <div className={styles.main_page} > 
         <div className={classNames(styles.skeleton, styles.skeleton_text, styles.skeleton_footer)}> </div>
-        <div className={classNames(styles.skeleton, styles.skeleton_text, styles.skeleton_footer)}> </div>
+        {/*<div className={classNames(styles.skeleton, styles.skeleton_text, styles.skeleton_footer)}> </div>*/}
         <div className={styles.grid} >
             <ArticleSkeleton />
             <ArticleSkeleton />
